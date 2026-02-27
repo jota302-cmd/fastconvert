@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media-FastConvert | OptiMicroTools</title>
+    <meta name="description"
+        content="Convert and optimize images locally with Media-FastConvert. Instant WebP, PNG, JPG conversion without uploading to servers. High performance, 100% private.">
+    <meta name="keywords"
+        content="image converter, optimize images, local conversion, webp converter, png to webp, jpg to png, privacy first, mediafastconvert, optimicrotools">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mediafastconvert.optimicrotools.com/">
+    <meta property="og:title" content="Media-FastConvert | Instant Local Image Optimization">
+    <meta property="og:description"
+        content="Professional image conversion tool. Fast, local, and private. No cloud, just browser power.">
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8167884438770174"
+        crossorigin="anonymous"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan-electric: #06B6D4;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .text-cyan-electric {
+            color: var(--cyan-electric);
+        }
+
+        .bg-cyan-electric {
+            background-color: var(--cyan-electric);
+        }
+
+        .border-cyan-electric {
+            border-color: var(--cyan-electric);
+        }
+
+        /* Animated border for drag zone */
+        @keyframes borderRotate {
+            0% {
+                border-color: var(--glass-border);
+            }
+
+            50% {
+                border-color: var(--cyan-electric);
+            }
+
+            100% {
+                border-color: var(--glass-border);
+            }
+        }
+
+        .drag-active {
+            animation: borderRotate 1.5s infinite;
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .ad-slot {
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .ad-slot::before {
+            content: attr(data-label);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Modal custom styles */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="p-6 flex justify-between items-center max-w-7xl mx-auto w-full">
+        <a href="https://optimicrotools.com" title="Go to Home / Ir al Inicio"
+            class="hover:opacity-80 transition-opacity flex items-center gap-2">
+            <div
+                class="w-8 h-8 bg-cyan-electric rounded-lg flex items-center justify-center font-bold text-black text-xl">
+                M</div>
+            <span class="text-xl font-bold tracking-tight">Media<span
+                    class="text-cyan-electric">FastConvert</span></span>
+        </a>
+        <button id="langToggle"
+            class="glass px-4 py-2 rounded-full text-sm font-medium hover:border-cyan-electric/50 transition-all">EN /
+            ES</button>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center px-4 max-w-4xl mx-auto w-full py-12">
+        <!-- Top Ad Slot -->
+        <div class="ad-slot w-full max-w-2xl" id="ad-top" data-label="Ads / Anuncio"></div>
+
+        <section class="w-full text-center mt-8">
+            <h1 id="mainTitle"
+                class="text-4xl md:text-5xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">
+                Optimiza tus imágenes al instante
+            </h1>
+            <p id="mainSubtitle" class="text-gray-400 text-lg mb-12">
+                Conversión local ultra-rápida. Sin servidores, máxima privacidad.
+            </p>
+
+            <!-- Drag & Drop Area -->
+            <div id="dropZone"
+                class="glass rounded-3xl p-12 mb-8 cursor-pointer transition-all duration-300 border-2 border-dashed border-white/10 hover:border-cyan-electric/50 group">
+                <input type="file" id="fileInput" class="hidden" accept="image/*">
+                <div class="flex flex-col items-center">
+                    <div
+                        class="w-16 h-16 bg-cyan-electric/10 rounded-2xl flex items-center justify-center mb-6 text-cyan-electric group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                    </div>
+                    <p id="dropText" class="text-xl font-medium mb-2">Suelta tu imagen aquí o haz clic</p>
+                    <p id="dropHint" class="text-gray-500 text-sm">PNG, JPG, WebP hasta 20MB</p>
+                </div>
+            </div>
+
+            <!-- Controls (Hidden until file selected) -->
+            <div id="controls" class="hidden glass rounded-2xl p-6 w-full mb-8 animate-in fade-in duration-500">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-left">
+                    <div>
+                        <label id="formatLabel" class="block text-sm font-medium text-gray-400 mb-2">Formato de
+                            Salida</label>
+                        <select id="formatSelect"
+                            class="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-cyan-electric transition-colors">
+                            <option value="webp">WebP (Recomendado)</option>
+                            <option value="png">PNG</option>
+                            <option value="jpeg">JPEG</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <label id="qualityLabel" class="text-sm font-medium text-gray-400">Calidad</label>
+                            <span id="qualityVal" class="text-cyan-electric font-bold">80%</span>
+                        </div>
+                        <input type="range" id="qualityRange" min="1" max="100" value="80"
+                            class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-cyan-electric">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview & Comparison (Hidden) -->
+            <div id="resultArea" class="hidden w-full mb-12 animate-in slide-in-from-bottom duration-500">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="glass rounded-2xl p-4">
+                        <p id="originLabel"
+                            class="text-xs text-gray-500 mb-2 uppercase tracking-widest font-bold text-left">Original
+                        </p>
+                        <div
+                            class="aspect-video rounded-xl overflow-hidden bg-white/5 flex items-center justify-center">
+                            <img id="prevOriginal" class="max-h-full object-contain">
+                        </div>
+                        <p id="originSize" class="mt-2 text-right text-sm text-gray-400">0 KB</p>
+                    </div>
+                    <div class="glass rounded-2xl p-4 border-cyan-electric/30">
+                        <p id="targetLabel"
+                            class="text-xs text-cyan-electric mb-2 uppercase tracking-widest font-bold text-left">
+                            Convertido</p>
+                        <div
+                            class="aspect-video rounded-xl overflow-hidden bg-white/5 flex items-center justify-center">
+                            <img id="prevTarget" class="max-h-full object-contain">
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span id="savingBadge"
+                                class="bg-cyan-electric/20 text-cyan-electric text-[10px] px-2 py-0.5 rounded-full font-bold">SAVE
+                                60%</span>
+                            <span id="targetSize" class="text-sm text-white font-medium">0 KB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="downloadBtn"
+                    class="bg-cyan-electric hover:bg-cyan-400 text-black font-bold py-4 px-10 rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                    Descargar Archivo Convertido
+                </button>
+            </div>
+
+            <!-- Privacy Notice -->
+            <div class="inline-flex items-center gap-2 text-xs text-gray-500 glass px-4 py-2 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-cyan-electric" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <span id="privacyDisclaimer">Tus archivos no se suben a ningún servidor. El procesamiento es 100%
+                    local.</span>
+            </div>
+        </section>
+
+        <!-- Bottom Ad Slot -->
+        <div class="ad-slot w-full max-w-2xl mt-12" id="ad-bottom" data-label="Ads / Anuncio"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-8 border-t border-white/5 text-center text-gray-500 text-sm">
+        <div class="flex justify-center gap-6 mb-4">
+            <button onclick="openModal('privacyModal')" id="privacyLink"
+                class="hover:text-cyan-electric transition-colors">Política de Privacidad</button>
+            <button onclick="openModal('termsModal')" id="termsLink"
+                class="hover:text-cyan-electric transition-colors">Términos de Servicio</button>
+        </div>
+        <p>© 2026 Media-FastConvert por <a href="https://optimicrotools.com"
+                class="text-white hover:text-cyan-electric">OptiMicroTools</a>. All rights reserved.</p>
+    </footer>
+
+    <!-- Modals -->
+    <div id="privacyModal" class="modal">
+        <div class="glass max-w-2xl w-[90%] max-h-[80vh] overflow-y-auto p-8 rounded-3xl relative">
+            <button onclick="closeModal('privacyModal')"
+                class="absolute top-4 right-4 text-gray-500 hover:text-white">&times;</button>
+            <h2 id="modalPrivacyTitle" class="text-2xl font-bold mb-4 text-cyan-electric">Política de Privacidad</h2>
+            <div id="modalPrivacyContent" class="text-gray-300 space-y-4 text-sm leading-relaxed">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <div id="termsModal" class="modal">
+        <div class="glass max-w-2xl w-[90%] max-h-[80vh] overflow-y-auto p-8 rounded-3xl relative">
+            <button onclick="closeModal('termsModal')"
+                class="absolute top-4 right-4 text-gray-500 hover:text-white">&times;</button>
+            <h2 id="modalTermsTitle" class="text-2xl font-bold mb-4 text-cyan-electric">Términos de Servicio</h2>
+            <div id="modalTermsContent" class="text-gray-300 space-y-4 text-sm leading-relaxed">
+                <!-- Content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                mainTitle: "Optimiza tus imágenes al instante",
+                mainSubtitle: "Conversión local ultra-rápida. Sin servidores, máxima privacidad.",
+                dropText: "Suelta tu imagen aquí o haz clic",
+                dropHint: "PNG, JPG, WebP hasta 20MB",
+                formatLabel: "Formato de Salida",
+                qualityLabel: "Calidad",
+                originLabel: "Original",
+                targetLabel: "Convertido",
+                downloadBtn: "Descargar Archivo Convertido",
+                privacyDisclaimer: "Tus archivos no se suben a ningún servidor. El procesamiento es 100% local.",
+                privacyLink: "Política de Privacidad",
+                termsLink: "Términos de Servicio",
+                modalPrivacyTitle: "Política de Privacidad",
+                modalTermsTitle: "Términos de Servicio",
+                errorSize: "Archivo demasiado grande. Máximo 20MB.",
+                errorFormat: "Formato no compatible. Por favor sube una imagen.",
+                saved: "AHORRO"
+            },
+            en: {
+                mainTitle: "Optimize your images instantly",
+                mainSubtitle: "Ultra-fast local conversion. No servers, maximum privacy.",
+                dropText: "Drop your image here or click",
+                dropHint: "PNG, JPG, WebP up to 20MB",
+                formatLabel: "Output Format",
+                qualityLabel: "Quality",
+                originLabel: "Original",
+                targetLabel: "Converted",
+                downloadBtn: "Download Converted File",
+                privacyDisclaimer: "Your files are not uploaded to any server. Processing is 100% local.",
+                privacyLink: "Privacy Policy",
+                termsLink: "Terms of Service",
+                modalPrivacyTitle: "Privacy Policy",
+                modalTermsTitle: "Terms of Service",
+                errorSize: "File too large. Maximum 20MB.",
+                errorFormat: "Unsupported format. Please upload an image.",
+                saved: "SAVED"
+            }
+        };
+
+        const legalText = {
+            es: {
+                privacy: "<p>En OptiMicroTools, la privacidad es nuestra prioridad. Media-FastConvert opera íntegramente en su navegador.</p><p><strong>Procesamiento Local:</strong> Sus imágenes se procesan localmente utilizando la potencia de su dispositivo. Nunca se transfieren a nuestros servidores ni a terceros.</p><p><strong>Cookies y Analítica:</strong> Podemos utilizar cookies técnicas para recordar su preferencia de idioma y AdSense para mostrar anuncios. No recopilamos datos personales de sus archivos.</p>",
+                terms: "<p>Al usar esta herramienta, usted acepta procesar sus archivos bajo su propia responsabilidad.</p><p><strong>Uso Permitido:</strong> La herramienta es gratuita para uso personal y profesional. No se permite el uso malintencionado que intente bloquear el servicio.</p><p><strong>Garantía:</strong> El servicio se proporciona 'tal cual' sin garantías de ningún tipo. No nos hacemos responsables de pérdidas de datos durante el proceso de descarga.</p>"
+            },
+            en: {
+                privacy: "<p>At OptiMicroTools, privacy is our priority. Media-FastConvert operates entirely within your browser.</p><p><strong>Local Processing:</strong> Your images are processed locally using your device's power. They are never transferred to our servers or third parties.</p><p><strong>Cookies & Analytics:</strong> We may use technical cookies to remember your language preference and AdSense to display ads. We do not collect personal data from your files.</p>",
+                terms: "<p>By using this tool, you agree to process your files at your own risk.</p><p><strong>Permitted Use:</strong> The tool is free for personal and professional use. Malicious use attempting to disrupt the service is strictly prohibited.</p><p><strong>Warranty:</strong> The service is provided 'as is' without warranties of any kind. We are not liable for any data loss during the download process.</p>"
+            }
+        };
+
+        let currentLang = localStorage.getItem('lang') || (navigator.language.startsWith('es') ? 'es' : 'en');
+        let originalFile = null;
+
+        function updateUI() {
+            const t = translations[currentLang];
+            document.getElementById('mainTitle').textContent = t.mainTitle;
+            document.getElementById('mainSubtitle').textContent = t.mainSubtitle;
+            document.getElementById('dropText').textContent = t.dropText;
+            document.getElementById('dropHint').textContent = t.dropHint;
+            document.getElementById('formatLabel').textContent = t.formatLabel;
+            document.getElementById('qualityLabel').textContent = t.qualityLabel;
+            document.getElementById('originLabel').textContent = t.originLabel;
+            document.getElementById('targetLabel').textContent = t.targetLabel;
+            document.getElementById('downloadBtn').textContent = t.downloadBtn;
+            document.getElementById('privacyDisclaimer').textContent = t.privacyDisclaimer;
+            document.getElementById('privacyLink').textContent = t.privacyLink;
+            document.getElementById('termsLink').textContent = t.termsLink;
+            document.getElementById('modalPrivacyTitle').textContent = t.modalPrivacyTitle;
+            document.getElementById('modalTermsTitle').textContent = t.modalTermsTitle;
+
+            document.getElementById('modalPrivacyContent').innerHTML = legalText[currentLang].privacy;
+            document.getElementById('modalTermsContent').innerHTML = legalText[currentLang].terms;
+
+            document.documentElement.lang = currentLang;
+        }
+
+        document.getElementById('langToggle').addEventListener('click', () => {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('lang', currentLang);
+            updateUI();
+        });
+
+        // Initialize UI
+        updateUI();
+
+        // Modal Logic
+        window.openModal = (id) => document.getElementById(id).style.display = 'flex';
+        window.closeModal = (id) => document.getElementById(id).style.display = 'none';
+        window.onclick = (event) => {
+            if (event.target.classList.contains('modal')) event.target.style.display = 'none';
+        };
+
+        // File Handling Logic
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const controls = document.getElementById('controls');
+        const resultArea = document.getElementById('resultArea');
+        const qualityRange = document.getElementById('qualityRange');
+        const qualityVal = document.getElementById('qualityVal');
+        const formatSelect = document.getElementById('formatSelect');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        let originalImage = null;
+        let originalFileName = "";
+        let originalType = "";
+
+        // Drag & Drop Events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-active'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-active'), false);
+        });
+
+        dropZone.addEventListener('drop', handleDrop, false);
+        dropZone.onclick = () => fileInput.click();
+        fileInput.onchange = (e) => handleFiles(e.target.files);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            handleFiles(dt.files);
+        }
+
+        function handleFiles(files) {
+            if (files.length === 0) return;
+            const file = files[0];
+
+            if (!file.type.startsWith('image/')) {
+                alert(translations[currentLang].errorFormat);
+                fileInput.value = ""; // Reset
+                return;
+            }
+
+            if (file.size > 20 * 1024 * 1024) {
+                alert(translations[currentLang].errorSize);
+                fileInput.value = ""; // Reset
+                return;
+            }
+
+            processFile(file);
+        }
+
+        function processFile(file) {
+            originalFile = file;
+            originalFileName = file.name.split('.').slice(0, -1).join('.');
+            originalSize = file.size;
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (e) => {
+                const img = new Image();
+                img.src = e.target.result;
+                img.onload = () => {
+                    originalImage = img;
+                    document.getElementById('prevOriginal').src = img.src;
+                    document.getElementById('originSize').textContent = formatBytes(file.size);
+
+                    // Show sections
+                    controls.classList.remove('hidden');
+                    resultArea.classList.remove('hidden');
+
+                    convertImage();
+                };
+            };
+        }
+
+        function convertImage() {
+            if (!originalImage) return;
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = originalImage.width;
+            canvas.height = originalImage.height;
+            ctx.drawImage(originalImage, 0, 0);
+
+            const format = formatSelect.value;
+            const quality = qualityRange.value / 100;
+            const mimeType = `image/${format === 'jpeg' ? 'jpeg' : format}`;
+
+            const dataUrl = canvas.toDataURL(mimeType, quality);
+            const prevTarget = document.getElementById('prevTarget');
+            prevTarget.src = dataUrl;
+
+            // Calculate size
+            const head = `data:${mimeType};base64,`;
+            const size = Math.round((dataUrl.length - head.length) * 3 / 4);
+            document.getElementById('targetSize').textContent = formatBytes(size);
+
+            // Savings calculation
+            const saving = Math.round(((originalFile.size - size) / originalFile.size) * 100);
+            const badge = document.getElementById('savingBadge');
+            badge.textContent = `${translations[currentLang].saved} ${saving}%`;
+            badge.style.opacity = saving > 0 ? 1 : 0;
+
+            downloadBtn.onclick = () => {
+                const link = document.createElement('a');
+                link.download = `${originalFileName}-converted.${format}`;
+                link.href = dataUrl;
+                link.click();
+
+                // Visual feedback
+                const originalText = downloadBtn.textContent;
+                downloadBtn.textContent = '✓ Done!';
+                downloadBtn.classList.replace('bg-cyan-electric', 'bg-green-500');
+                setTimeout(() => {
+                    downloadBtn.textContent = originalText;
+                    downloadBtn.classList.replace('bg-green-500', 'bg-cyan-electric');
+                }, 2000);
+            };
+        }
+
+        qualityRange.oninput = (e) => {
+            qualityVal.textContent = `${e.target.value}%`;
+            convertImage();
+        };
+
+        formatSelect.onchange = convertImage;
+
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+    </script>
+</body>
+
+</html>
