@@ -13,7 +13,8 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --cyan-electric: #06B6D4;
@@ -73,8 +74,15 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .animate-fade-in {
@@ -91,11 +99,13 @@
             -webkit-appearance: none;
             background: transparent;
         }
+
         input[type=range]::-webkit-slider-runnable-track {
             background: rgba(255, 255, 255, 0.1);
             height: 4px;
             border-radius: 2px;
         }
+
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 16px;
@@ -108,10 +118,22 @@
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--cyan-electric); }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--cyan-electric);
+        }
     </style>
 </head>
 
@@ -119,10 +141,12 @@
     <!-- Header -->
     <header class="p-6 flex justify-between items-center max-w-7xl mx-auto w-full relative z-50">
         <a href="https://optimicrotools.com" title="Go to Home / Ir al Inicio" class="flex items-center gap-3 group">
-            <div class="w-10 h-10 rounded-full bg-cyan-electric flex items-center justify-center transition-all group-hover:scale-110">
+            <div
+                class="w-10 h-10 rounded-full bg-cyan-electric flex items-center justify-center transition-all group-hover:scale-110">
                 <span class="text-black font-black text-xl">O</span>
             </div>
-            <span class="font-bold text-xl tracking-tighter hidden sm:block">OptiMicro<span class="text-cyan-electric">Tools</span></span>
+            <span class="font-bold text-xl tracking-tighter hidden sm:block">OptiMicro<span
+                    class="text-cyan-electric">Tools</span></span>
         </a>
         <button id="langToggle"
             class="glass px-4 py-2 rounded-full text-[10px] font-bold hover:border-cyan-electric transition-all tracking-widest uppercase">
@@ -132,7 +156,7 @@
 
     <main class="flex-grow flex flex-col items-center px-4 max-w-4xl mx-auto w-full relative z-10">
         <!-- Top Ad Slot -->
-        <div class="ad-slot w-full max-w-2xl" id="ad-top" data-label="Advertisement / Anuncio"></div>
+        <div class="ad-slot w-full max-w-2xl min-h-[90px]" id="ad-top" data-label="Advertisement / Anuncio"></div>
 
         <section class="w-full text-center mt-8 animate-fade-in">
             <h1 id="mainTitle" class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
@@ -147,9 +171,12 @@
                 class="glass rounded-[32px] p-12 mb-8 cursor-pointer transition-all duration-300 border-2 border-dashed border-white/5 hover:border-cyan-electric group relative overflow-hidden">
                 <div class="absolute inset-0 bg-cyan-electric opacity-0 group-hover:opacity-5 transition-opacity"></div>
                 <div class="relative z-10">
-                    <div class="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-electric" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                    <div
+                        class="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-electric" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                         </svg>
                     </div>
                     <h2 id="dropText" class="text-2xl font-bold mb-2">Suelta tu imagen aquí</h2>
@@ -162,8 +189,11 @@
             <div id="controls" class="hidden glass rounded-3xl p-8 w-full mb-8 text-left animate-fade-in">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                     <div>
-                        <label id="formatLabel" class="block text-[10px] font-bold uppercase tracking-widest text-cyan-electric mb-3">Formato de Salida</label>
-                        <select id="formatSelect" class="w-full bg-black/40 border border-white/5 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-electric transition-colors appearance-none">
+                        <label id="formatLabel"
+                            class="block text-[10px] font-bold uppercase tracking-widest text-cyan-electric mb-3">Formato
+                            de Salida</label>
+                        <select id="formatSelect"
+                            class="w-full bg-black/40 border border-white/5 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-electric transition-colors appearance-none">
                             <option value="webp" selected>WebP</option>
                             <option value="jpeg">JPG</option>
                             <option value="png">PNG</option>
@@ -171,7 +201,8 @@
                     </div>
                     <div>
                         <div class="flex justify-between items-center mb-3">
-                            <label id="qualityLabel" class="text-[10px] font-bold uppercase tracking-widest text-cyan-electric">Calidad</label>
+                            <label id="qualityLabel"
+                                class="text-[10px] font-bold uppercase tracking-widest text-cyan-electric">Calidad</label>
                             <span id="qualityVal" class="text-sm font-bold text-white">80%</span>
                         </div>
                         <input type="range" id="qualityRange" min="10" max="100" value="80"
@@ -184,18 +215,24 @@
             <div id="resultArea" class="hidden w-full mb-12 animate-fade-in">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div class="glass rounded-2xl p-6 text-left">
-                        <p id="originLabel" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-4">Original</p>
-                        <div class="aspect-video flex items-center justify-center bg-black/50 rounded-xl overflow-hidden mb-4 border border-white/5">
+                        <p id="originLabel" class="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-4">
+                            Original</p>
+                        <div
+                            class="aspect-video flex items-center justify-center bg-black/50 rounded-xl overflow-hidden mb-4 border border-white/5">
                             <img id="prevOriginal" class="max-h-full max-w-full object-contain">
                         </div>
                         <p id="originSize" class="text-right text-sm font-mono text-gray-400">0 KB</p>
                     </div>
                     <div class="glass rounded-2xl p-6 border-cyan-electric/20 text-left relative">
                         <div class="flex justify-between items-center mb-4">
-                            <p id="targetLabel" class="text-[10px] font-bold uppercase tracking-widest text-cyan-electric">Resultado</p>
-                            <span id="savingBadge" class="bg-cyan-electric text-black px-3 py-1 rounded-full text-[10px] font-black tracking-tighter opacity-0 transition-opacity">SAVED 0%</span>
+                            <p id="targetLabel"
+                                class="text-[10px] font-bold uppercase tracking-widest text-cyan-electric">Resultado</p>
+                            <span id="savingBadge"
+                                class="bg-cyan-electric text-black px-3 py-1 rounded-full text-[10px] font-black tracking-tighter opacity-0 transition-opacity">SAVED
+                                0%</span>
                         </div>
-                        <div class="aspect-video flex items-center justify-center bg-black/50 rounded-xl overflow-hidden mb-4 border border-white/5">
+                        <div
+                            class="aspect-video flex items-center justify-center bg-black/50 rounded-xl overflow-hidden mb-4 border border-white/5">
                             <img id="prevTarget" class="max-h-full max-w-full object-contain">
                         </div>
                         <p id="targetSize" class="text-right text-sm font-bold text-white">0 KB</p>
@@ -209,66 +246,186 @@
             </div>
 
             <!-- Privacy Badge -->
-            <div class="inline-flex items-center gap-2 text-[10px] text-gray-500 glass px-5 py-2 rounded-full uppercase tracking-[0.2em] font-bold opacity-70">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-cyan-electric" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            <div
+                class="inline-flex items-center gap-2 text-[10px] text-gray-500 glass px-5 py-2 rounded-full uppercase tracking-[0.2em] font-bold opacity-70">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-cyan-electric" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
                 <span id="privacyDisclaimer">Privacidad Total: Procesamiento 100% Local</span>
             </div>
         </section>
 
+        <!-- Technical Insights Section -->
+        <section class="w-full mt-20 mb-12 animate-fade-in">
+            <div class="glass rounded-[32px] p-8 md:p-12 text-left relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-electric/5 rounded-full blur-3xl -mr-32 -mt-32">
+                </div>
+
+                <h2 class="text-3xl font-black mb-8 tracking-tight" style="color: #06B6D4;">
+                    Technical Insights: How Media-FastConvert Works
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 id="aboutValTitle"
+                                class="text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-electric mb-4">Value
+                                Proposition</h3>
+                            <p id="aboutValDesc" class="text-gray-400 leading-relaxed">
+                                Media-FastConvert es una solución de ingeniería diseñada para la optimización y
+                                conversión masiva de activos visuales sin intermediarios. Utiliza algoritmos avanzados
+                                de procesamiento en el cliente para transformar formatos complejos como WebP, PNG y JPEG
+                                en milisegundos. Esta herramienta elimina la necesidad de subir archivos confidenciales
+                                a nubes externas, acelerando drásticamente el flujo de trabajo de diseñadores,
+                                desarrolladores y creadores de contenido que exigen rendimiento sin comprometer la
+                                resolución.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 id="aboutUsageTitle"
+                                class="text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-electric mb-4">Quick
+                                Usage Guide</h3>
+                            <ul class="space-y-3 text-sm">
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-cyan-electric/10 text-cyan-electric flex items-center justify-center text-[10px] font-bold border border-cyan-electric/20">1</span>
+                                    <span id="step1Text">Arrastra o selecciona tus archivos en la zona de carga
+                                        interactiva.</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-cyan-electric/10 text-cyan-electric flex items-center justify-center text-[10px] font-bold border border-cyan-electric/20">2</span>
+                                    <span id="step2Text">Ajusta los parámetros de calidad y selecciona el formato de
+                                        destino deseado.</span>
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <span
+                                        class="w-6 h-6 rounded-full bg-cyan-electric/10 text-cyan-electric flex items-center justify-center text-[10px] font-bold border border-cyan-electric/20">3</span>
+                                    <span id="step3Text">Visualiza el ahorro en tiempo real y descarga tu contenido
+                                        optimizado.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8">
+                        <div class="glass p-6 rounded-2xl border-cyan-electric/10">
+                            <h3 id="aboutSecurityTitle"
+                                class="text-[10px] font-bold uppercase tracking-[0.2em] text-white mb-3">Security &
+                                Privacy</h3>
+                            <p id="aboutSecurityDesc" class="text-xs text-gray-500 leading-relaxed">
+                                Garantizamos la integridad total de sus datos mediante <strong>Client-Side
+                                    Processing</strong>. A diferencia de otros convertidores, Media-FastConvert utiliza
+                                JavaScript puro y Canvas API para procesar cada bit directamente en su memoria RAM
+                                local. Los datos nunca abandonan su dispositivo, asegurando cumplimiento con normativas
+                                de privacidad globales y eliminando cualquier vector de exposición en servidores de
+                                terceros.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 id="aboutFaqTitle"
+                                class="text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-electric mb-4">
+                                Technical FAQ</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 id="faq1Q" class="text-xs font-bold text-gray-300 mb-1">¿Hay límites en el
+                                        tamaño de archivo?</h4>
+                                    <p id="faq1A" class="text-xs text-gray-500">Soportamos archivos de hasta 20MB para
+                                        garantizar que el navegador mantenga la estabilidad durante la manipulación de
+                                        buffers pesados.</p>
+                                </div>
+                                <div>
+                                    <h4 id="faq2Q" class="text-xs font-bold text-gray-300 mb-1">¿Cómo funciona la
+                                        pérdida de calidad?</h4>
+                                    <p id="faq2A" class="text-xs text-gray-500">Utilizamos cuantización inteligente
+                                        durante la codificación WebP/JPEG para maximizar el ahorro de bytes manteniendo
+                                        la fidelidad visual perceptiva.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Bottom Ad Slot -->
-        <div class="ad-slot w-full max-w-2xl mt-12" id="ad-bottom" data-label="Advertisement / Anuncio"></div>
+        <div class="ad-slot w-full max-w-2xl mt-12 min-h-[90px]" id="ad-bottom" data-label="Advertisement / Anuncio">
+        </div>
     </main>
 
     <!-- Footer -->
     <footer class="p-12 border-t border-white/5 text-center relative z-20">
         <div class="flex flex-wrap justify-center gap-8 mb-8 text-[10px] font-bold uppercase tracking-widest">
-            <button onclick="openModal('privacyModal')" id="privacyLink" class="text-gray-500 hover:text-cyan-electric transition-colors">Privacy</button>
-            <button onclick="openModal('termsModal')" id="termsLink" class="text-gray-500 hover:text-cyan-electric transition-colors">Terms</button>
-            <button onclick="openModal('supportModal')" id="supportLink" class="text-cyan-electric hover:text-white transition-colors">Support Project</button>
-            <button onclick="openModal('contactModal')" id="contactLink" class="text-gray-500 hover:text-cyan-electric transition-colors">Contact</button>
+            <button onclick="openModal('privacyModal')" id="privacyLink"
+                class="text-gray-500 hover:text-cyan-electric transition-colors">Privacy</button>
+            <button onclick="openModal('termsModal')" id="termsLink"
+                class="text-gray-500 hover:text-cyan-electric transition-colors">Terms</button>
+            <button onclick="openModal('supportModal')" id="supportLink"
+                class="text-cyan-electric hover:text-white transition-colors">Support Project</button>
+            <button onclick="openModal('contactModal')" id="contactLink"
+                class="text-gray-500 hover:text-cyan-electric transition-colors">Contact</button>
         </div>
-        <p class="text-gray-700 text-[10px] tracking-[0.3em] font-medium uppercase">&copy; 2026 MEDIA-FASTCONVERT &bull; BY <a href="https://optimicrotools.com" class="text-white hover:text-cyan-electric">OPTIMICROTOOLS</a> &bull; LUXURY HUB-MATCH</p>
+        <p class="text-gray-700 text-[10px] tracking-[0.3em] font-medium uppercase">&copy; 2026 MEDIA-FASTCONVERT &bull;
+            BY <a href="https://optimicrotools.com" class="text-white hover:text-cyan-electric">OPTIMICROTOOLS</a>
+            &bull; LUXURY HUB-MATCH</p>
     </footer>
 
     <!-- Modals -->
     <div id="privacyModal" class="modal">
-        <div class="glass max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto p-12 rounded-[32px] relative animate-fade-in shadow-2xl">
-            <button onclick="closeModal('privacyModal')" class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
-            <h2 id="modalPrivacyTitle" class="text-3xl font-black mb-8 text-cyan-electric tracking-tight uppercase">Política de Privacidad</h2>
+        <div
+            class="glass max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto p-12 rounded-[32px] relative animate-fade-in shadow-2xl">
+            <button onclick="closeModal('privacyModal')"
+                class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
+            <h2 id="modalPrivacyTitle" class="text-3xl font-black mb-8 text-cyan-electric tracking-tight uppercase">
+                Política de Privacidad</h2>
             <div id="modalPrivacyContent" class="text-gray-400 space-y-6 text-sm leading-relaxed text-left"></div>
         </div>
     </div>
 
     <div id="termsModal" class="modal">
-        <div class="glass max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto p-12 rounded-[32px] relative animate-fade-in shadow-2xl">
-            <button onclick="closeModal('termsModal')" class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
-            <h2 id="modalTermsTitle" class="text-3xl font-black mb-8 text-cyan-electric tracking-tight uppercase">Términos de Servicio</h2>
+        <div
+            class="glass max-w-2xl w-[90%] max-h-[85vh] overflow-y-auto p-12 rounded-[32px] relative animate-fade-in shadow-2xl">
+            <button onclick="closeModal('termsModal')"
+                class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
+            <h2 id="modalTermsTitle" class="text-3xl font-black mb-8 text-cyan-electric tracking-tight uppercase">
+                Términos de Servicio</h2>
             <div id="modalTermsContent" class="text-gray-400 space-y-6 text-sm leading-relaxed text-left"></div>
         </div>
     </div>
 
     <div id="supportModal" class="modal">
         <div class="glass max-w-md w-[90%] p-10 rounded-[32px] relative animate-fade-in shadow-2xl text-center">
-            <button onclick="closeModal('supportModal')" class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
-            <h2 id="supportTitle" class="text-3xl font-black mb-6 text-cyan-electric tracking-tight uppercase">Support Project</h2>
-            <p id="supportSub" class="text-gray-400 text-sm mb-8 leading-relaxed font-light">Mantenemos el ecosistema libre de trackers y servidores. Ayúdanos a seguir adelante.</p>
+            <button onclick="closeModal('supportModal')"
+                class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
+            <h2 id="supportTitle" class="text-3xl font-black mb-6 text-cyan-electric tracking-tight uppercase">Support
+                Project</h2>
+            <p id="supportSub" class="text-gray-400 text-sm mb-8 leading-relaxed font-light">Mantenemos el ecosistema
+                libre de trackers y servidores. Ayúdanos a seguir adelante.</p>
             <div class="space-y-4">
-                <a href="https://www.buymeacoffee.com/jota302" target="_blank" class="flex items-center justify-between w-full glass p-5 rounded-2xl hover:border-cyan-electric transition-all group">
+                <a href="https://www.buymeacoffee.com/jota302" target="_blank"
+                    class="flex items-center justify-between w-full glass p-5 rounded-2xl hover:border-cyan-electric transition-all group">
                     <span class="font-bold text-xs uppercase tracking-widest">Buy Me a Coffee</span>
                     <span class="text-cyan-electric group-hover:translate-x-1 transition-transform">→</span>
                 </a>
-                <a href="https://paypal.me/jota302" target="_blank" class="flex items-center justify-between w-full glass p-5 rounded-2xl hover:border-cyan-electric transition-all group">
+                <a href="https://paypal.me/jota302" target="_blank"
+                    class="flex items-center justify-between w-full glass p-5 rounded-2xl hover:border-cyan-electric transition-all group">
                     <span class="font-bold text-xs uppercase tracking-widest">PayPal</span>
                     <span class="text-cyan-electric group-hover:translate-x-1 transition-transform">→</span>
                 </a>
-                <div class="glass p-6 rounded-2xl text-left border-cyan-electric/10 relative overflow-hidden shadow-inner">
+                <div
+                    class="glass p-6 rounded-2xl text-left border-cyan-electric/10 relative overflow-hidden shadow-inner">
                     <div class="absolute inset-0 bg-cyan-electric opacity-5"></div>
-                    <p class="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500 mb-3 relative z-10">Crypto (USDT TRC20)</p>
+                    <p class="text-[9px] font-black uppercase tracking-[0.2em] text-gray-500 mb-3 relative z-10">Crypto
+                        (USDT TRC20)</p>
                     <div class="flex items-center gap-3 relative z-10">
-                        <code class="text-[9px] text-cyan-electric font-mono truncate flex-grow">TE95Gtd8qTWnsEcqXxDEoQoKLNg2hMvVtV</code>
-                        <button onclick="copyCrypto()" id="copyBtn" class="bg-cyan-electric text-black px-4 py-1.5 rounded-lg text-[10px] font-black hover:scale-105 active:scale-95 transition-all shadow-md">COPY</button>
+                        <code
+                            class="text-[9px] text-cyan-electric font-mono truncate flex-grow">TE95Gtd8qTWnsEcqXxDEoQoKLNg2hMvVtV</code>
+                        <button onclick="copyCrypto()" id="copyBtn"
+                            class="bg-cyan-electric text-black px-4 py-1.5 rounded-lg text-[10px] font-black hover:scale-105 active:scale-95 transition-all shadow-md">COPY</button>
                     </div>
                 </div>
             </div>
@@ -277,15 +434,27 @@
 
     <div id="contactModal" class="modal">
         <div class="glass max-w-sm w-[90%] p-10 rounded-[32px] relative animate-fade-in shadow-2xl text-center">
-            <button onclick="closeModal('contactModal')" class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
-            <h2 id="contactTitle" class="text-3xl font-black mb-8 text-cyan-electric tracking-tight uppercase">Contact</h2>
+            <button onclick="closeModal('contactModal')"
+                class="absolute top-8 right-8 text-gray-500 hover:text-white transition-colors text-2xl">&times;</button>
+            <h2 id="contactTitle" class="text-3xl font-black mb-8 text-cyan-electric tracking-tight uppercase">Contact
+            </h2>
             <div class="grid grid-cols-2 gap-4">
-                <a href="https://x.com/optimicrotools" target="_blank" class="glass p-6 rounded-2xl hover:border-cyan-electric transition-all flex flex-col items-center gap-3 group">
-                    <svg class="w-6 h-6 text-white group-hover:text-cyan-electric transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <a href="https://x.com/optimicrotools" target="_blank"
+                    class="glass p-6 rounded-2xl hover:border-cyan-electric transition-all flex flex-col items-center gap-3 group">
+                    <svg class="w-6 h-6 text-white group-hover:text-cyan-electric transition-colors" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                     <span class="text-[9px] font-bold uppercase tracking-widest mt-2">Twitter</span>
                 </a>
-                <a href="mailto:jota302@gmail.com" class="glass p-6 rounded-2xl hover:border-cyan-electric transition-all flex flex-col items-center gap-3 group">
-                    <svg class="w-6 h-6 text-white group-hover:text-cyan-electric transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <a href="mailto:jota302@gmail.com"
+                    class="glass p-6 rounded-2xl hover:border-cyan-electric transition-all flex flex-col items-center gap-3 group">
+                    <svg class="w-6 h-6 text-white group-hover:text-cyan-electric transition-colors" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
                     <span class="text-[9px] font-bold uppercase tracking-widest mt-2">Email</span>
                 </a>
             </div>
@@ -318,7 +487,20 @@
                 errorFormat: "Formato de imagen no compatible para procesamiento local.",
                 saved: "AHORRO",
                 copy: "COPIAR",
-                copied: "COPIADO"
+                copied: "COPIADO",
+                aboutValTitle: "Propuesta de Valor",
+                aboutValDesc: "Media-FastConvert es una solución de ingeniería diseñada para la optimización y conversión masiva de activos visuales sin intermediarios. Utiliza algoritmos avanzados de procesamiento en el cliente para transformar formatos complejos como WebP, PNG y JPEG en milisegundos. Esta herramienta elimina la necesidad de subir archivos confidenciales a nubes externas, acelerando drásticamente el flujo de trabajo de diseñadores, desarrolladores y creadores de contenido que exigen rendimiento sin comprometer la resolución.",
+                aboutUsageTitle: "Guía de Uso Rápido",
+                step1Text: "Arrastra o selecciona tus archivos en la zona de carga interactiva.",
+                step2Text: "Ajusta los parámetros de calidad y selecciona el formato de destino deseado.",
+                step3Text: "Visualiza el ahorro en tiempo real y descarga tu contenido optimizado.",
+                aboutSecurityTitle: "Seguridad y Privacidad",
+                aboutSecurityDesc: "Garantizamos la integridad total de sus datos mediante Client-Side Processing. A diferencia de otros convertidores, Media-FastConvert utiliza JavaScript puro y Canvas API para procesar cada bit directamente en su memoria RAM local. Los datos nunca abandonan su dispositivo, asegurando cumplimiento con normativas de privacidad globales y eliminando cualquier vector de exposición en servidores de terceros.",
+                aboutFaqTitle: "FAQ Técnica",
+                faq1Q: "¿Hay límites en el tamaño de archivo?",
+                faq1A: "Soportamos archivos de hasta 20MB para garantizar que el navegador mantenga la estabilidad durante la manipulación de buffers pesados.",
+                faq2Q: "¿Cómo funciona la pérdida de calidad?",
+                faq2A: "Utilizamos cuantización inteligente durante la codificación WebP/JPEG para maximizar el ahorro de bytes manteniendo la fidelidad visual perceptiva."
             },
             en: {
                 mainTitle: "Media Optimization",
@@ -340,6 +522,19 @@
                 supportTitle: "Support Project",
                 supportSub: "We keep the ecosystem free of trackers and servers. Help us keep it going.",
                 contactTitle: "Official Contact",
+                aboutValTitle: "Value Proposition",
+                aboutValDesc: "Media-FastConvert is an engineering solution designed for the optimization and massive conversion of visual assets without intermediaries. It uses advanced client-side processing algorithms to transform complex formats such as WebP, PNG, and JPEG in milliseconds. This tool eliminates the need to upload sensitive files to external clouds, drastically accelerating the workflow of designers, developers, and content creators who demand performance without compromising resolution.",
+                aboutUsageTitle: "Quick Usage Guide",
+                step1Text: "Drag or select your files in the interactive upload zone.",
+                step2Text: "Adjust the quality parameters and select the desired destination format.",
+                step3Text: "Visualize savings in real-time and download your optimized content.",
+                aboutSecurityTitle: "Security & Privacy",
+                aboutSecurityDesc: "We guarantee total data integrity through Client-Side Processing. Unlike other converters, Media-FastConvert uses pure JavaScript and Canvas API to process each bit directly in your local RAM. Data never leaves your device, ensuring compliance with global privacy regulations and eliminating any exposure vectors on third-party servers.",
+                aboutFaqTitle: "Technical FAQ",
+                faq1Q: "Are there file size limits?",
+                faq1A: "We support files up to 20MB to ensure the browser maintains stability during heavy buffer manipulation.",
+                faq2Q: "How does quality loss work?",
+                faq2A: "We use smart quantization during WebP/JPEG encoding to maximize byte savings while maintaining perceptual visual fidelity.",
                 errorSize: "File too large. Maximum 20MB.",
                 errorFormat: "Invalid image format for local processing.",
                 saved: "SAVED",
@@ -387,7 +582,7 @@
                 document.getElementById('termsLink').textContent = t.termsLink;
                 document.getElementById('supportLink').textContent = t.supportLink;
                 document.getElementById('contactLink').textContent = t.contactLink;
-                
+
                 document.getElementById('modalPrivacyTitle').textContent = t.modalPrivacyTitle;
                 document.getElementById('modalTermsTitle').textContent = t.modalTermsTitle;
                 document.getElementById('supportTitle').textContent = t.supportTitle;
@@ -397,6 +592,22 @@
                 document.getElementById('modalPrivacyContent').innerHTML = legalText[currentLang].privacy;
                 document.getElementById('modalTermsContent').innerHTML = legalText[currentLang].terms;
                 document.getElementById('copyBtn').textContent = t.copy;
+
+                // About Section Updates
+                document.getElementById('aboutValTitle').textContent = t.aboutValTitle;
+                document.getElementById('aboutValDesc').textContent = t.aboutValDesc;
+                document.getElementById('aboutUsageTitle').textContent = t.aboutUsageTitle;
+                document.getElementById('step1Text').textContent = t.step1Text;
+                document.getElementById('step2Text').textContent = t.step2Text;
+                document.getElementById('step3Text').textContent = t.step3Text;
+                document.getElementById('aboutSecurityTitle').textContent = t.aboutSecurityTitle;
+                document.getElementById('aboutSecurityDesc').textContent = t.aboutSecurityDesc;
+                document.getElementById('aboutFaqTitle').textContent = t.aboutFaqTitle;
+                document.getElementById('faq1Q').textContent = t.faq1Q;
+                document.getElementById('faq1A').textContent = t.faq1A;
+                document.getElementById('faq2Q').textContent = t.faq2Q;
+                document.getElementById('faq2A').textContent = t.faq2A;
+
             } catch (err) {
                 console.error("UI Update Error:", err);
             }
@@ -405,7 +616,7 @@
         document.getElementById('langToggle').addEventListener('click', () => {
             currentLang = currentLang === 'es' ? 'en' : 'es';
             updateUI();
-            if (originalFile) convertImage(); 
+            if (originalFile) convertImage();
         });
 
         // Initialize
@@ -499,9 +710,9 @@
                 const format = formatSelect.value;
                 const quality = qualityRange.value / 100;
                 const mime = `image/${format === 'jpeg' ? 'jpeg' : format}`;
-                
+
                 currentDataUrl = canvas.toDataURL(mime, quality);
-                
+
                 const prevTarget = document.getElementById('prevTarget');
                 prevTarget.src = currentDataUrl;
 
